@@ -1,11 +1,9 @@
-# Dependências
 node_modules/
 
 # Build
 dist/
 dist-ssr/
 
-# Variáveis de ambiente (nunca versionar!)
 .env
 .env.local
 .env.production

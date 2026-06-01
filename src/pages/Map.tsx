@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import * as L from 'leaflet'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Spinner }    from '@/components/ui/Spinner'
 import { useReport }  from '@/hooks/useReport'
@@ -11,9 +12,6 @@ export function Map() {
 
   useEffect(() => {
     if (!report?.points || leafletRef.current) return
-
-    const L = (window as any).L
-    if (!L) return
 
     const map = L.map(mapContainerRef.current!).setView([-9.62, -35.73], 12)
     leafletRef.current = map
