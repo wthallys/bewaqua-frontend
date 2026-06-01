@@ -81,7 +81,7 @@ export function Map() {
 
       <div
         ref={mapContainerRef}
-        className="h-[520px] rounded-xl overflow-hidden border border-cinza-borda"
+        className="relative z-0 h-[420px] rounded-xl overflow-hidden border border-cinza-borda sm:h-[520px]"
       />
 
       <p className="text-xs text-cinza mt-3">

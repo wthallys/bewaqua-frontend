@@ -40,49 +40,55 @@ export function Compare() {
       titulo="Comparativo"
       subtitulo="Compare dois relatórios e veja o que mudou semana a semana"
     >
-      <div className="flex flex-wrap gap-3 items-center mb-8">
-        <label className="text-sm text-cinza">De:</label>
-        <select
-          value={before}
-          onChange={e => setBefore(e.target.value)}
-          disabled={loadingList}
-          className="border border-cinza-borda rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-verde-mid"
-        >
-          {reports.map(r => (
-            <option key={r.collected_at} value={r.collected_at}>
-              {fmt(r.collected_at)} — {r.reab}
-            </option>
-          ))}
-        </select>
+      <div className="mb-8 rounded-xl border border-cinza-borda bg-white p-4 sm:p-5">
+        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
+          <div className="space-y-1.5">
+            <label className="block text-sm text-cinza">De:</label>
+            <select
+              value={before}
+              onChange={e => setBefore(e.target.value)}
+              disabled={loadingList}
+              className="w-full border border-cinza-borda rounded-lg bg-white px-3 py-2 text-sm focus:border-verde-mid focus:outline-none"
+            >
+              {reports.map(r => (
+                <option key={r.collected_at} value={r.collected_at}>
+                  {fmt(r.collected_at)} — {r.reab}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <label className="text-sm text-cinza">Para:</label>
-        <select
-          value={after}
-          onChange={e => setAfter(e.target.value)}
-          disabled={loadingList}
-          className="border border-cinza-borda rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-verde-mid"
-        >
-          {reports.map(r => (
-            <option key={r.collected_at} value={r.collected_at}>
-              {fmt(r.collected_at)} — {r.reab}
-            </option>
-          ))}
-        </select>
+          <div className="space-y-1.5">
+            <label className="block text-sm text-cinza">Para:</label>
+            <select
+              value={after}
+              onChange={e => setAfter(e.target.value)}
+              disabled={loadingList}
+              className="w-full border border-cinza-borda rounded-lg bg-white px-3 py-2 text-sm focus:border-verde-mid focus:outline-none"
+            >
+              {reports.map(r => (
+                <option key={r.collected_at} value={r.collected_at}>
+                  {fmt(r.collected_at)} — {r.reab}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <button
-          onClick={compare}
-          disabled={!before || !after || before === after || loading}
-          className="px-4 py-1.5 bg-verde text-white text-sm rounded-lg hover:opacity-90 transition-opacity disabled:opacity-40"
-        >
-          Comparar
-        </button>
+          <button
+            onClick={compare}
+            disabled={!before || !after || before === after || loading}
+            className="w-full rounded-lg bg-verde px-4 py-2 text-sm text-white transition-opacity hover:opacity-90 disabled:opacity-40 md:w-auto"
+          >
+            Comparar
+          </button>
+        </div>
       </div>
 
       {loading && <Spinner />}
 
       {result && !loading && (
         <>
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               { num: result.summary.improved,  label: 'Melhoraram',  color: '#0F6E56' },
               { num: result.summary.worsened,  label: 'Pioraram',    color: '#A32D2D' },

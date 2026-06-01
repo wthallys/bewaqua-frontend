@@ -25,10 +25,10 @@ export function PointModal({ point, onClose }: PointModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end bg-[#2C2C2A]/50"
+      className="fixed inset-0 z-[1200] flex items-end bg-[#2C2C2A]/50"
       onClick={e => e.target === e.currentTarget && onClose()}
     >
-      <div className="bg-white w-full max-w-lg mx-auto rounded-t-2xl px-7 py-6 max-h-[82vh] overflow-y-auto animate-slide-up">
+      <div className="mx-auto max-h-[82vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white px-5 py-6 animate-slide-up sm:px-7">
         <div className="w-10 h-1 bg-cinza-borda rounded mx-auto mb-5" />
 
         <div className="flex justify-between items-start gap-4 mb-5">
@@ -40,7 +40,7 @@ export function PointModal({ point, onClose }: PointModalProps) {
           <Badge category={point.category} />
         </div>
 
-        <div className="grid grid-cols-3 gap-2.5 mb-6">
+        <div className="mb-6 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
           {[
             { val: point.temperature ? `${point.temperature}°C` : '—', lbl: 'Temperatura' },
             { val: point.collected_time || '—',                          lbl: 'Hora coleta'  },
