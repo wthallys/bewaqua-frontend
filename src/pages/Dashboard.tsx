@@ -132,7 +132,7 @@ function PointCard({ point: p, onClick }: { point: Point; onClick: () => void })
         {[
           { val: p.temperature ? `${p.temperature}°` : '—', lbl: 'Temp'   },
           { val: p.collected_time || '—',                    lbl: 'Coleta' },
-          { val: p.rainy ? '☁' : '☀',                       lbl: 'Chuva'  },
+          { val: p.rainy ? '☁' : '☀',                       lbl: 'Clima'  },
         ].map(m => (
           <div key={m.lbl} className="rounded-lg border border-cinza-borda bg-fundo py-2 text-center">
             <div className="text-base font-medium leading-none">{m.val}</div>
